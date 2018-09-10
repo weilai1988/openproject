@@ -136,6 +136,8 @@ export class WorkPackageCommentComponent implements IEditFieldHandler, OnInit, O
     this.editing = true;
 
     this.reset(withText);
+
+    this.scrollToBottom();
   }
 
   public get project() {
@@ -200,5 +202,11 @@ export class WorkPackageCommentComponent implements IEditFieldHandler, OnInit, O
 
   stopPropagation(evt:JQueryEventObject):boolean {
     return false;
+  }
+
+  scrollToBottom():void {
+    const activitiesContainer = this.elementRef.nativeElement.closest('.work-packages--details-content');
+    setTimeout(() => { activitiesContainer.scrollTop = activitiesContainer.scrollHeight; }, 1000);
+
   }
 }
